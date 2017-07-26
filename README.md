@@ -1,0 +1,2 @@
+# CharacterLocationSeeker
+找到Lable中的任意字符的frame
