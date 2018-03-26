@@ -57,7 +57,6 @@
     [self.textStorage setAttributedString:attributedText];
 }
 
-
 - (CGRect)characterRectAtIndex:(NSUInteger)charIndex {
     if (charIndex >= self.textStorage.length) {
         return CGRectZero;

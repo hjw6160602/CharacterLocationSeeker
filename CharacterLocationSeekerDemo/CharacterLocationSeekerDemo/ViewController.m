@@ -33,8 +33,13 @@
 - (void)setupViews
 {
     // Attributes
-    NSString *string = @"【双湾爆款】三亚双湾双飞5日4晚自由行([三亚湾＋亚龙湾]三亚湾红树林木棉酒店2晚＋2晚亚龙湾红树林，赠双人BBQ自助晚餐一次 赠水乐园门票 每日自助早餐  含接机)";
-    CGColorRef cgColor = [UIColor magentaColor].CGColor;
+    // 无论如何调整label的lineBreakMode,系统的调用方法永远选择的是WordWrapping
+    
+//    NSString *string = @"【驴悦亲子】广州珠海双飞5日4晚自由行(前2晚住广州长隆酒店、后2晚住珠海长隆横琴湾酒店，广州进珠海返，机票可选【现在预订前20位还赠送儿童旅行成长册】";
+    
+    NSString *string = @"杭州、乌镇西栅、西塘巴士3日游( 赠宋城门票，船游西溪，纯玩，夜宿乌镇)";
+//    NSString *string = @"珠海长隆双飞3日2晚自由行(长隆迎海酒店2晚，含接送机)";
+    CGColorRef cgColor = [UIColor cyanColor].CGColor;
     CGFloat borderW = 1.f;
 
     
@@ -46,7 +51,7 @@
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentLeft;
     label.font = [UIFont fontWithName:@"Helvetica" size:16];
-    label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    label.lineBreakMode = NSLineBreakByCharWrapping;
     
     label.text = string;
     [self.view addSubview:label];
@@ -61,9 +66,9 @@
     self.flagView = flagView;
     
     self.buttons = [NSMutableArray arrayWithCapacity:3];
-    [self.buttons addObject:[self buttonWithTitle:@"locationSeeker" action:@selector(onLocationSeekerButton:)]];
-    [self.buttons addObject:[self buttonWithTitle:@"textViewSeeker" action:@selector(onTextViewButton:)]];
-    [self.buttons addObject:[self buttonWithTitle:@"reset" action:@selector(onRestButton:)]];
+    [self.buttons addObject:[self buttonWithTitle:@"下一个字符的frame" action:@selector(onLocationSeekerButton:)]];
+    [self.buttons addObject:[self buttonWithTitle:@"最后一个字符的frame" action:@selector(onTextViewButton:)]];
+    [self.buttons addObject:[self buttonWithTitle:@"重置" action:@selector(onRestButton:)]];
 }
 
 - (UIButton *)buttonWithTitle:(NSString *)title action:(SEL)action
@@ -81,9 +86,9 @@
 - (void)setupLayout
 {
     // Layout
-    [self.view addConstraint:[self.label.widthAnchor constraintEqualToConstant:355]];
+    [self.view addConstraint:[self.label.widthAnchor constraintEqualToConstant:394]];
     [self.view addConstraint:[self.label.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor constant:-100]];
-    [self.view addConstraint:[self.label.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]];
+    [self.view addConstraint:[self.label.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:10]];
     
     __block UIView *lastView = self.label;
     [self.buttons enumerateObjectsUsingBlock:^(UIButton * _Nonnull button, NSUInteger idx, BOOL * _Nonnull stop) {
